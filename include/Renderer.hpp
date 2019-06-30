@@ -12,6 +12,8 @@
 
 #include <ncurses.h>
 #include <unistd.h>
+#include "Engine.hpp"
+
 
 #ifndef RENDERER_HPP
 #define RENDERER_HPP
@@ -30,7 +32,7 @@ public:
 	static const int GAME_INFO_WIDTH = 100;
 	static const int GAME_INFO_HEIGHT = 5;
 
-	void    render(void);
+	void	render(Engine& engine);
 
 private:
 	WINDOW *_game;

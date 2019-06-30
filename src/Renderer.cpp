@@ -40,6 +40,9 @@ void	Renderer::_render_game(void)
 	box(_game, 0, 0);
 
 
+
+
+
 	mvprintw(_render_iterator, 0, "X");
 	wrefresh(_game);
 }
@@ -65,8 +68,7 @@ void	Renderer::_init_info(void)
 }
 
 
-
-void	Renderer::render(void)
+void	Renderer::render(Engine& engine)
 {
 	if (!initscr())
 	{
@@ -104,6 +106,15 @@ void	Renderer::render(void)
 			old_time = new_time;
 			_render_game();
 			_render_info();
+
+			int i = -1;
+			while (++i < engine.getPlanes().getArrayLen()) {
+				mvprintw(
+						engine.getPlanes().getItem(i)->getX(),
+						engine.getPlanes().getItem(i)->getY(),
+						"X"
+				);
+			}
 
 			_render_iterator++;
 		}
