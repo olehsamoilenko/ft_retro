@@ -62,7 +62,7 @@ Actor::Actor(int x, int y) : AItem(x, y)
 
 std::ostream & operator<<(std::ostream & o, Actor const & src)
 {
-	o << "Actor (" << src.getX() << ", " << src.getY() << ")" << std::endl;
+	o << "Actor (" << src.getX() << ", " << src.getY() << ")";
 	return (o);
 }
 
