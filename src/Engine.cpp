@@ -164,7 +164,7 @@ void Engine::nextStep(void)
 				g_ofs << "* colision: ";
 				_planes.getItem(i)->showInfo(g_ofs);
 				g_ofs << " and ";
-				g_ofs << _actor << " *" << std::endl;
+				g_ofs << *_actor << " *" << std::endl;
 				_actor->takeDamage(_planes.getItem(i));
 				_planes.kill(i);
 			}
