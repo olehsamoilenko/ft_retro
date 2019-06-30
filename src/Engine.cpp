@@ -158,7 +158,10 @@ Engine & Engine::operator=(Engine const & src)
 {
 	if (this != &src)
 	{
-		// ?
+		_actor = src._actor;
+		_planes = src._planes;
+		_asteriods = src._asteriods;
+		_bullets = src._bullets;
 	}
 	return (*this);
 }

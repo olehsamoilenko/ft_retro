@@ -13,12 +13,8 @@
 #ifndef AITEM_HPP
 # define AITEM_HPP
 
-// # include <iostream>
-
-// delete
 # include <fstream>
 extern std::ofstream g_ofs;
-// delete
 
 class AItem
 {
@@ -27,7 +23,6 @@ class AItem
 		virtual AItem* clone() const = 0;
 		virtual void showInfo(std::ostream & o) const = 0;
 
-		AItem(void);
 		AItem(AItem const & src);
 		AItem & operator=(AItem const & src);
 		AItem(int x, int y);
@@ -42,11 +37,10 @@ class AItem
 
 		virtual char getCharacter(void) const = 0;
 	
-	protected: // private ?
+	protected:
+		AItem(void);
 		int _x;
 		int _y;
 };
-
-// std::ostream & operator<<(std::ostream & o, AItem const &);
 
 #endif

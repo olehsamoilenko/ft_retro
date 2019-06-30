@@ -28,12 +28,6 @@ void Plane::showInfo(std::ostream & o) const
 	o << "Plane (" << _x << ", " << _y << ")";
 }
 
-// std::ostream & operator<<(std::ostream & o, Plane const &)
-// {
-// 	o << "Plane" << std::endl;
-// 	return (o);
-// }
-
 Plane::Plane(int x, int y) : AItem(x, y)
 {
 	g_ofs << "* Plane created *" << std::endl;

@@ -48,7 +48,7 @@ Bullet & Bullet::operator=(Bullet const & src)
 {
 	if (this != &src)
 	{
-		// ?
+
 	}
 	return (*this);
 }

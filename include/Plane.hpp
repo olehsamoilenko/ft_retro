@@ -32,6 +32,4 @@ class Plane : public AItem
 		Plane(void);
 };
 
-// std::ostream & operator<<(std::ostream & o, Plane const &);
-
 #endif

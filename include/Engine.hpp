@@ -28,14 +28,11 @@ class Engine
 		Container const & getAsteroids(void) const;
 		Container const & getBullets(void) const;
 		Actor * getActor(void) const;
-		// Actor const & getActor(void) const;
 		void nextStep(void);
-
 		void shoot(void);
 
 	private:
 		Actor *		_actor;
-
 		Container	_planes;
 		Container	_asteriods;
 		Container	_bullets;

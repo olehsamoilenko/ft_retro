@@ -17,7 +17,6 @@
 
 class Bullet;
 class Container;
-// class AItem;
 
 class Actor : public AItem
 {

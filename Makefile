@@ -12,7 +12,7 @@
 
 NAME =	ft_retro
 CC =	clang++
-CFLAGS = #-Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 CLASS =	AItem \
 		Plane \
 		Engine \
