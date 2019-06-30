@@ -10,17 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Engine.hpp"
 
-#include "Plane.hpp"
-#include "Asteroid.hpp"
 
-#include <cmath>
+// #include "Plane.hpp"
+// #include "Container.hpp"
+// #include "Engine.hpp"
+// #include "Renderer.hpp"
 
 // int		main(void)
 // {
 // 	Renderer *gameRender = new Renderer();
-// 	Engine e(gameRender->GAME_SCENE_HEIGHT, gameRender->GAME_SCENE_WIDTH, 5);
+// 	Engine e;
 // 	g_ofs << e.getPlanes();
 // 	e.shoot();
 
@@ -32,6 +32,12 @@
 
 // 	return (0);
 // }
+
+#include "Engine.hpp"
+#include "Plane.hpp"
+#include "Asteroid.hpp"
+#include "Renderer.hpp"
+#include <cmath>
 
 Container const & Engine::getBullets(void) const
 {
@@ -60,54 +66,55 @@ void Engine::nextStep(void)
 	{
 		if (_planes.getItem(i))
 		{
-			_planes.getItem(i)->moveLeft(_winHeight, _winWidth);
+			_planes.getItem(i)->moveLeft();
 			if (_planes.getItem(i)->getY() < 0)
 				_planes.kill(i);
 		}
 	}
 	i = -1;
 	while (++i < _asteriods.getArrayLen())
-		_asteriods.getItem(i)->moveLeft(_winHeight, _winWidth);
+		_asteriods.getItem(i)->moveLeft();
 
 	i = -1;
 	while (++i < _bullets.getArrayLen())
 	{
 		if (_bullets.getItem(i))
 		{
-			_bullets.getItem(i)->moveRight(_winHeight, _winWidth);
+			_bullets.getItem(i)->moveRight();
 			if (_bullets.getItem(i)->getX() < 0)
 				_bullets.kill(i);
 		}
 	}
 }
 
-Engine::Engine(int height, int width, int planes)
+Engine::Engine(void)
 {
-	_winHeight = height;
-	_winWidth = width;
-	int i = -1;
-	while (++i < 10)
-		_planes.push(new Plane(rand() % _winHeight, _winWidth));
-	i = -1;
-	while (++i < 30)
-		_asteriods.push(new Asteroid(rand() % _winHeight, rand() % _winWidth));
-	_actor = new Actor(_winHeight / 2, 0);
-	g_ofs << _planes;
-	_planes.kill(5);
-	nextStep();
-	g_ofs << _planes;
+	for (int i = 0; i < 10; i++)
+	{
+		_planes.push(new Plane(
+			rand() % (Renderer::GAME_SCENE_HEIGHT - 1) + 1,
+			Renderer::GAME_SCENE_WIDTH - 1));
+	}
+	for (int i = 0; i < 30; i++)
+	{
+		_asteriods.push(new Asteroid(
+			rand() % (Renderer::GAME_SCENE_HEIGHT - 1) + 1,
+			rand() % Renderer::GAME_SCENE_WIDTH - 1
+			));
+	}
+	_actor = new Actor(Renderer::GAME_INFO_HEIGHT / 2, 0);
 }
 
 Engine::~Engine(void)
 {
-	// g_ofs << "* marine dead *" << std::endl;
+
 }
 
 Engine & Engine::operator=(Engine const & src)
 {
 	if (this != &src)
 	{
-
+		// ?
 	}
 	return (*this);
 }

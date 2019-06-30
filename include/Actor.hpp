@@ -21,7 +21,6 @@ class Container;
 class Actor : public AItem
 {
 	public:
-		Actor(void);
 		Actor(int x, int y);
 		Actor(Actor const &);
 		Actor & operator=(Actor const &);
@@ -31,10 +30,13 @@ class Actor : public AItem
 		void showInfo(std::ostream & o) const;
 
 		char getCharacter(void) const;
+		void moveUp(void);
+		void moveDown(void);
 
 		AItem * shoot(void) const;
 
 	private:
+		Actor(void);
 };
 
 

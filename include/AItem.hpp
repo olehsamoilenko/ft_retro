@@ -35,10 +35,10 @@ class AItem
 		int getX(void) const;
 		int getY(void) const;
 
-		virtual void moveUp(int limitX, int limitY);
-		virtual void moveDown(int limitX, int limitY);
-		virtual void moveLeft(int limitX, int limitY);
-		virtual void moveRight(int limitX, int limitY);
+		virtual void moveUp(void);
+		virtual void moveDown(void);
+		virtual void moveLeft(void);
+		virtual void moveRight(void);
 
 		virtual char getCharacter(void) const = 0;
 	
