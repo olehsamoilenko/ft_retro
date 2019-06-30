@@ -33,7 +33,7 @@ void Asteroid::moveLeft(int limitX, int limitY)
 
 void Asteroid::showInfo(std::ostream & o) const
 {
-	o << "Asteroid (" << _x << ", " << _y << ")" << std::endl;
+	o << "Asteroid (" << _x << ", " << _y << ")";
 }
 
 Asteroid::Asteroid(int x, int y) : AItem(x, y)

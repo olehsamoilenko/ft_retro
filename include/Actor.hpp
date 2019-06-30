@@ -39,5 +39,7 @@ class Actor : public AItem
 		Actor(void);
 };
 
+std::ostream & operator<<(std::ostream & o, Actor const &);
+
 
 #endif

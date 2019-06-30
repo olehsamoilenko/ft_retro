@@ -90,12 +90,11 @@ std::ostream & operator<<(std::ostream & o, Container const & src)
 	{
 		AItem * item;
 		o << "\t";
-		// o << *src.getItem(i);
 		if ( (item = src.getItem(i)) != nullptr )
 			item->showInfo(o);
 		else
-			o << "empty" << std::endl;
-		// o << std::endl;
+			o << "empty";
+		o << std::endl;
 	}
 	return (o);
 }

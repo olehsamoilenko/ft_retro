@@ -34,14 +34,14 @@ char Actor::getCharacter(void) const
 	return ('A');
 }
 
+void Actor::showInfo(std::ostream & o) const
+{
+	o << "Bullet (" << _x << ", " << _y << ")";
+}
+
 Actor * Actor::clone(void) const
 {
 	return (new Actor(*this));
-}
-
-void Actor::showInfo(std::ostream & o) const
-{
-	o << "Actor (" << _x << ", " << _y << ")" << std::endl;
 }
 
 AItem * Actor::shoot(void) const
@@ -52,6 +52,12 @@ AItem * Actor::shoot(void) const
 Actor::Actor(int x, int y) : AItem(x, y)
 {
 	g_ofs << "* Actor created *" << std::endl;
+}
+
+std::ostream & operator<<(std::ostream & o, Actor const & src)
+{
+	o << "Actor (" << src.getX() << ", " << src.getY() << ")" << std::endl;
+	return (o);
 }
 
 Actor::Actor(void) //: AItem()
