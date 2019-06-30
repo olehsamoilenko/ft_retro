@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Plane.cpp                                          :+:      :+:    :+:   */
+/*   Actor.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osamoile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,41 +10,48 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Plane.hpp"
+#include "Actor.hpp"
 #include "AItem.hpp"
 
-char Plane::getCharacter(void) const
+#include "Container.hpp"
+#include "Bullet.hpp"
+
+char Actor::getCharacter(void) const
 {
-	return 'P';
+	return 'A';
 }
 
-Plane * Plane::clone(void) const
+Actor * Actor::clone(void) const
 {
-	return (new Plane(*this));
+	return (new Actor(*this));
 }
 
-void Plane::showInfo(std::ostream & o) const
+void Actor::showInfo(std::ostream & o) const
 {
-	o << "Plane (" << _x << ", " << _y << ")" << std::endl;
+	o << "Actor (" << _x << ", " << _y << ")" << std::endl;
 }
 
-// std::ostream & operator<<(std::ostream & o, Plane const &)
-// {
-// 	o << "Plane" << std::endl;
-// 	return (o);
-// }
-
-Plane::Plane(int x, int y) : AItem(x, y)
+AItem * Actor::shoot(void) const
 {
-	g_ofs << "* Plane created *" << std::endl;
+	return (new Bullet(_x, _y));
 }
 
-Plane::~Plane(void)
+Actor::Actor(int x, int y) : AItem(x, y)
 {
-	g_ofs << "* Plane dead *" << std::endl;
+	g_ofs << "* Actor created *" << std::endl;
 }
 
-Plane & Plane::operator=(Plane const & src)
+Actor::Actor(void) : AItem()
+{
+
+}
+
+Actor::~Actor(void)
+{
+	g_ofs << "* Actor dead *" << std::endl;
+}
+
+Actor & Actor::operator=(Actor const & src)
 {
 	if (this != &src)
 	{
@@ -53,7 +60,7 @@ Plane & Plane::operator=(Plane const & src)
 	return (*this);
 }
 
-Plane::Plane(Plane const & src)
+Actor::Actor(Actor const & src)
 {
 	*this = src;
 }

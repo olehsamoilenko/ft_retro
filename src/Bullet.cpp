@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Plane.cpp                                          :+:      :+:    :+:   */
+/*   Bullet.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osamoile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,41 +10,41 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Plane.hpp"
+#include "Bullet.hpp"
 #include "AItem.hpp"
 
-char Plane::getCharacter(void) const
+char Bullet::getCharacter(void) const
 {
-	return 'P';
+	return 'B';
 }
 
-Plane * Plane::clone(void) const
+Bullet * Bullet::clone(void) const
 {
-	return (new Plane(*this));
+	return (new Bullet(*this));
 }
 
-void Plane::showInfo(std::ostream & o) const
+void Bullet::showInfo(std::ostream & o) const
 {
-	o << "Plane (" << _x << ", " << _y << ")" << std::endl;
+	o << "Bullet (" << _x << ", " << _y << ")" << std::endl;
 }
 
-// std::ostream & operator<<(std::ostream & o, Plane const &)
+// std::ostream & operator<<(std::ostream & o, Bullet const &)
 // {
-// 	o << "Plane" << std::endl;
+// 	o << "Bullet" << std::endl;
 // 	return (o);
 // }
 
-Plane::Plane(int x, int y) : AItem(x, y)
+Bullet::Bullet(int x, int y) : AItem(x, y)
 {
-	g_ofs << "* Plane created *" << std::endl;
+	g_ofs << "* Bullet created *" << std::endl;
 }
 
-Plane::~Plane(void)
+Bullet::~Bullet(void)
 {
-	g_ofs << "* Plane dead *" << std::endl;
+	g_ofs << "* Bullet dead *" << std::endl;
 }
 
-Plane & Plane::operator=(Plane const & src)
+Bullet & Bullet::operator=(Bullet const & src)
 {
 	if (this != &src)
 	{
@@ -53,7 +53,7 @@ Plane & Plane::operator=(Plane const & src)
 	return (*this);
 }
 
-Plane::Plane(Plane const & src)
+Bullet::Bullet(Bullet const & src)
 {
 	*this = src;
 }

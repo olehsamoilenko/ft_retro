@@ -18,7 +18,9 @@ CLASS =	AItem \
 		Engine \
 		Container \
 		Renderer \
-		Asteroid
+		Asteroid \
+		Actor \
+		Bullet
 IFACE =
 HPP =	$(addprefix include/, $(addsuffix .hpp, $(CLASS) $(IFACE)))
 OBJ =	$(addprefix obj/, $(addsuffix .o, $(CLASS) main))

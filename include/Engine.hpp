@@ -13,6 +13,7 @@
 #ifndef ENGINE_HPP
 # define ENGINE_HPP
 
+#include "Actor.hpp"
 #include "Container.hpp"
 
 class Engine
@@ -25,17 +26,22 @@ class Engine
 
 		Container const & getPlanes(void) const;
 		Container const & getAsteroids(void) const;
-		
+		Container const & getBullets(void) const;
+		// Actor const & getActor(void) const;
 		void nextStep(void);
+
+		void shoot(void);
 
 	private:
 		Engine(void);
 		int _winHeight;
 		int _winWidth;
-		// container bullets
-		Container _planes;
-		Container _asteriods;
-		// container asteroids
+
+		Actor *		_actor;
+
+		Container	_planes;
+		Container	_asteriods;
+		Container	_bullets;
 };
 
 #endif
