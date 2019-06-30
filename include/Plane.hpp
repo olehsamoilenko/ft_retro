@@ -18,9 +18,9 @@
 extern std::ofstream g_ofs;
 // delete
 
-#include "IItem.hpp"
+#include "AItem.hpp"
 
-class Plane : public IItem
+class Plane : public AItem
 {
 	public:
 		Plane(void);
@@ -29,9 +29,9 @@ class Plane : public IItem
 		virtual ~Plane(void);
 
 		Plane * clone(void) const;
-		// void meleeAttack() const; // bonus
+		void showInfo(std::ostream & o) const;
 };
 
-std::ostream & operator<<(std::ostream & o, Plane const &);
+// std::ostream & operator<<(std::ostream & o, Plane const &);
 
 #endif

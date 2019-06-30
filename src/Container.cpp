@@ -11,19 +11,11 @@
 /* ************************************************************************** */
 
 #include "Container.hpp"
-#include "IItem.hpp"
+#include "AItem.hpp"
 
 int Container::getCount() const
 {
 	return (_arrayLen);
-}
-
-IItem * Container::getItem(int n) const
-{
-	if (n < 0 || n > _arrayLen)
-		return (0);
-	else
-		return (_items[n]);
 }
 
 int Container::getArrayLen(void) const
@@ -31,11 +23,19 @@ int Container::getArrayLen(void) const
 	return (_arrayLen);
 }
 
-int Container::push(IItem* item)
+AItem * Container::getItem(int n) const
+{
+	if (n < 0 || n > _arrayLen)
+		return (0);
+	else
+		return (_items[n]);
+}
+
+int Container::push(AItem* item)
 {
 	if (_arrayLen == 0)
 	{
-		_items = new IItem*[1];
+		_items = new AItem*[1];
 		_items[0] = item;
 	}
 	else
@@ -50,7 +50,16 @@ int Container::push(IItem* item)
 			}
 		}
 		i = -1;
-		IItem ** tmp = new IItem*[_arrayLen + 1];
+		while (++i < _arrayLen)
+		{
+			if (_items[i] == nullptr)
+			{
+				_items[i] = item;
+				return (_arrayLen);
+			}
+		}
+		AItem ** tmp = new AItem*[_arrayLen + 1];
+		i = -1;
 		while (++i < _arrayLen)
 			tmp[i] = _items[i];
 		tmp[_arrayLen] = item;
@@ -61,12 +70,33 @@ int Container::push(IItem* item)
 	return (_arrayLen);
 }
 
+bool Container::kill(int id)
+{
+	if (id < 0 || id >= _arrayLen || _items[id] == nullptr)
+		return (false);
+	else
+	{
+		delete _items[id];
+		_items[id] = nullptr;
+		return (true);
+	}
+}
+
 std::ostream & operator<<(std::ostream & o, Container const & src)
 {
 	o << "Container (" << src.getArrayLen() << " elements):" << std::endl;
 	int i = -1;
 	while (++i < src.getArrayLen())
-		o << "\t" << src.getItem(i) << std::endl;
+	{
+		AItem * item;
+		o << "\t";
+		// o << *src.getItem(i);
+		if ( (item = src.getItem(i)) != nullptr )
+			item->showInfo(o);
+		else
+			o << "empty" << std::endl;
+		// o << std::endl;
+	}
 	return (o);
 }
 
@@ -97,7 +127,7 @@ Container & Container::operator=(Container const & src)
 				delete _items[i];
 			delete [] _items;
 			_arrayLen = src._arrayLen;
-			_items = new IItem*[_arrayLen];
+			_items = new AItem*[_arrayLen];
 			i = -1;
 			while (++i < _arrayLen)
 				_items[i] = src._items[i]->clone();

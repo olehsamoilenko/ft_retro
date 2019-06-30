@@ -12,19 +12,29 @@
 
 #include "Plane.hpp"
 #include "Container.hpp"
+#include "Engine.hpp"
 
 int		main(void)
 {
-	Plane *tm1 = new Plane();
-	Plane *tm2 = new Plane();
-	Plane *tm3 = new Plane();
+	Engine e(5);
 
-	Container c;
-	c.push(tm1);
-	c.push(tm2);
-	c.push(tm3);
-	g_ofs << c;
+	// e.push(new Plane());
+	// e.push(new Plane());
+	// e.push(new Plane());
 
+	g_ofs << e.getPlanes();
+	e.nextStep();
+	g_ofs << e.getPlanes();
+
+	// c.kill(0);
+	// c.kill(1);
+	// // c.kill(2);
+	// c.kill(3);
+
+
+
+	// g_ofs << c;
+	system("leaks ft_retro > leaks.txt");
 
 	return (0);
 }

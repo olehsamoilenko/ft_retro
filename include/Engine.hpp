@@ -13,19 +13,24 @@
 #ifndef ENGINE_HPP
 # define ENGINE_HPP
 
+#include "Container.hpp"
+
 class Engine
 {
 	public:
-		Engine(void);
+		Engine(int planes); // ?
 		Engine(Engine const &);
 		Engine & operator=(Engine const &);
 		virtual ~Engine(void);
 
-		// nextStep
+		Container const & getPlanes(void) const;
+		
+		void nextStep(void);
 
 	private:
+		Engine(void);
 		// container bullets
-		// container enemies
+		Container _planes;
 		// container asteroids
 };
 
