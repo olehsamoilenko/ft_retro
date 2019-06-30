@@ -15,7 +15,7 @@
 
 char Bullet::getCharacter(void) const
 {
-	return 'B';
+	return '*';
 }
 
 Bullet * Bullet::clone(void) const

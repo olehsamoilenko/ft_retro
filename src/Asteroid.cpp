@@ -21,14 +21,14 @@ Asteroid * Asteroid::clone(void) const
 
 char Asteroid::getCharacter(void) const
 {
-	return ('A');
+	return ('.');
 }
 
-void Asteroid::moveLeft(int limitX, int limitY)
+void Asteroid::moveLeft(void)
 {
 	AItem::moveLeft();
-	if (_y < 0)
-		_y = Renderer::GAME_SCENE_WIDTH - 1;
+	if (_y < 2)
+		_y = Renderer::GAME_SCENE_WIDTH - 2;
 }
 
 void Asteroid::showInfo(std::ostream & o) const
