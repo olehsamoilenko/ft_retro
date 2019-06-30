@@ -17,6 +17,7 @@
 
 class Bullet;
 class Container;
+// class AItem;
 
 class Actor : public AItem
 {
@@ -30,13 +31,18 @@ class Actor : public AItem
 		void showInfo(std::ostream & o) const;
 
 		char getCharacter(void) const;
+		int getLives(void) const;
 		void moveUp(void);
 		void moveDown(void);
+
+		void takeDamage(AItem * plane);
 
 		AItem * shoot(void) const;
 
 	private:
 		Actor(void);
+
+		int _lives;
 };
 
 std::ostream & operator<<(std::ostream & o, Actor const &);

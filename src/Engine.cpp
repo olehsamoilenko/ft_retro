@@ -112,7 +112,7 @@ void Engine::nextStep(void)
 		_asteriods.getItem(i)->moveLeft();
 	}
 
-	// /* move bullets */
+	/* move bullets */
 	for (int i = 0; i < _bullets.getArrayLen(); i++)
 	{
 		if (_bullets.getItem(i))
@@ -153,6 +153,23 @@ void Engine::nextStep(void)
 			}
 		}
 	}
+
+	/* check actor-plane colision */
+	for (int i = 0; i < _planes.getArrayLen(); i++)
+	{
+		if (_planes.getItem(i) &&
+			_planes.getItem(i)->getY() == 1 &&
+			_planes.getItem(i)->getX() == _actor->getX())
+			{
+				g_ofs << "* colision: ";
+				_planes.getItem(i)->showInfo(g_ofs);
+				g_ofs << " and ";
+				g_ofs << _actor << " *" << std::endl;
+				_actor->takeDamage(_planes.getItem(i));
+				_planes.kill(i);
+			}
+	}
+	
 }
 
 Engine::Engine(void)
