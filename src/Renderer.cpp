@@ -140,7 +140,7 @@ void	Renderer::_render_final(Engine& engine)
 	char hello2[] = " YOUR SCORE ";
 	mvaddstr(GAME_SCENE_HEIGHT / 2, (GAME_SCENE_WIDTH - strlen(hello))/2, hello);
 	mvaddstr(GAME_SCENE_HEIGHT / 2 + 1, (GAME_SCENE_WIDTH - strlen(hello2))/2, hello2);
-	mvwprintw(_game, GAME_SCENE_HEIGHT / 2 + 2, (GAME_SCENE_WIDTH / 2), "%d", engine.getActor()->getScore());
+	mvwprintw(_game, GAME_SCENE_HEIGHT / 2 + 2, (GAME_SCENE_WIDTH / 2) - 1, "%d", engine.getActor()->getScore());
 	mvaddstr(GAME_SCENE_HEIGHT / 2 + 3, (GAME_SCENE_WIDTH - strlen(hello))/2, hello);
 	wrefresh(_game);
 
