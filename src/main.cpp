@@ -16,7 +16,7 @@
 
 int		main(void)
 {
-	Engine e(5);
+	Engine e(100, 10, 3);
 
 	// e.push(new Plane());
 	// e.push(new Plane());
