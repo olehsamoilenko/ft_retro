@@ -35,7 +35,7 @@ class AItem
 		void moveLeft(void);
 		void moveRight(void);
 	
-	protected:
+	protected: // private ?
 		int _x;
 		int _y;
 };

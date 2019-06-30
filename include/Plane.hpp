@@ -23,13 +23,16 @@ extern std::ofstream g_ofs;
 class Plane : public AItem
 {
 	public:
-		Plane(void);
+		Plane(int x, int y);
 		Plane(Plane const &);
 		Plane & operator=(Plane const &);
 		virtual ~Plane(void);
 
 		Plane * clone(void) const;
 		void showInfo(std::ostream & o) const;
+
+	private:
+		Plane(void);
 };
 
 // std::ostream & operator<<(std::ostream & o, Plane const &);

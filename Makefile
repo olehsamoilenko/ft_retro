@@ -16,8 +16,9 @@ CFLAGS = -Wall -Werror -Wextra
 CLASS =	AItem \
 		Plane \
 		Engine \
-		Container
-IFACE =	
+		Container \
+		Renderer
+IFACE =
 HPP =	$(addprefix include/, $(addsuffix .hpp, $(CLASS) $(IFACE)))
 OBJ =	$(addprefix obj/, $(addsuffix .o, $(CLASS) main))
 
@@ -27,7 +28,7 @@ obj/%.o: src/%.cpp $(HPP)
 	$(CC) -c $< -o $@ $(CFLAGS) -I ./include
 
 $(NAME): obj $(OBJ)
-	$(CC) $(OBJ) -o $(NAME)
+	$(CC) $(OBJ) -o $(NAME) -lncurses
 
 obj:
 	mkdir obj

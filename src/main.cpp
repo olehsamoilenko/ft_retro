@@ -10,31 +10,38 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+// #include <ncurses.h>
+
 #include "Plane.hpp"
 #include "Container.hpp"
-#include "Engine.hpp"
+#include "Renderer.hpp"
+
+#include <ncurses.h>
+
 
 int		main(void)
 {
-	Engine e(100, 10, 3);
 
-	// e.push(new Plane());
-	// e.push(new Plane());
-	// e.push(new Plane());
+	Renderer *gameRender = new Renderer();
 
-	g_ofs << e.getPlanes();
-	e.nextStep();
-	g_ofs << e.getPlanes();
-
-	// c.kill(0);
-	// c.kill(1);
-	// // c.kill(2);
-	// c.kill(3);
-
-
-
-	// g_ofs << c;
-	system("leaks ft_retro > leaks.txt");
+	gameRender->render();
 
 	return (0);
 }
+
+
+//int		main(void)
+//{
+//	Plane *tm1 = new Plane();
+//	Plane *tm2 = new Plane();
+//	Plane *tm3 = new Plane();
+//
+//	Container c;
+//	c.push(tm1);
+//	c.push(tm2);
+//	c.push(tm3);
+//	g_ofs << c;
+//
+//
+//	return (0);
+//}

@@ -31,7 +31,7 @@ void Plane::showInfo(std::ostream & o) const
 // 	return (o);
 // }
 
-Plane::Plane(void) : AItem(0, 0) // not (0,0)
+Plane::Plane(int x, int y) : AItem(x, y)
 {
 	g_ofs << "* plane created *" << std::endl;
 }

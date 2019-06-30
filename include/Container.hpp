@@ -24,7 +24,6 @@ class Container
 		Container(Container const & src);
 		Container & operator=(Container const & src);
 		~Container(void);
-
 		int getArrayLen() const;
 		int getCount() const;
 		AItem * getItem(int id) const;

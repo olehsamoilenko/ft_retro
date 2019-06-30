@@ -18,7 +18,7 @@
 class Engine
 {
 	public:
-		Engine(int planes); // ?
+		Engine(int height, int width, int planes);
 		Engine(Engine const &);
 		Engine & operator=(Engine const &);
 		virtual ~Engine(void);
@@ -29,6 +29,8 @@ class Engine
 
 	private:
 		Engine(void);
+		int _winHeight;
+		int _winWidth;
 		// container bullets
 		Container _planes;
 		// container asteroids

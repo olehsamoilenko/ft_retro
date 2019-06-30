@@ -13,6 +13,8 @@
 #include "Engine.hpp"
 #include "Plane.hpp"
 
+#include <cmath>
+
 Container const & Engine::getPlanes(void) const
 {
 	return (_planes);
@@ -27,11 +29,13 @@ void Engine::nextStep(void)
 	// g_ofs << _planes;
 }
 
-Engine::Engine(int planes)
+Engine::Engine(int height, int width, int planes)
 {
+	_winHeight = height;
+	_winWidth = width;
 	int i = -1;
 	while (++i < planes)
-		_planes.push(new Plane());
+		_planes.push(new Plane(rand() % _winHeight, rand() % _winWidth));
 }
 
 Engine::~Engine(void)
