@@ -10,21 +10,38 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ncurses.h>
+
 #include "Plane.hpp"
 #include "Container.hpp"
+#include "Renderer.hpp"
+
+#include <ncurses.h>
+
 
 int		main(void)
 {
-	Plane *tm1 = new Plane();
-	Plane *tm2 = new Plane();
-	Plane *tm3 = new Plane();
 
-	Container c;
-	c.push(tm1);
-	c.push(tm2);
-	c.push(tm3);
-	g_ofs << c;
+	Renderer *gameRender = new Renderer();
 
+	gameRender->render();
 
 	return (0);
 }
+
+
+//int		main(void)
+//{
+//	Plane *tm1 = new Plane();
+//	Plane *tm2 = new Plane();
+//	Plane *tm3 = new Plane();
+//
+//	Container c;
+//	c.push(tm1);
+//	c.push(tm2);
+//	c.push(tm3);
+//	g_ofs << c;
+//
+//
+//	return (0);
+//}
