@@ -40,12 +40,15 @@ private:
 
 	int		_render_iterator;
 	int		_player_press_key;
+	int		_speed;
 
-	void _render_game(void);
+	void _render_game(Engine& engine);
 	void _render_info(void);
 
 	void _init_game(void);
 	void _init_info(void);
+	void _update_speed(int key_press);
+	void _update_player_move(int key_press, Engine& engine);
 
 };
 
