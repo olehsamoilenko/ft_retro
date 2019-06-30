@@ -22,13 +22,13 @@
 // 	// g_ofs << e.getBullets();
 // 	// g_ofs << e.getPlanes();
 
-// 	for (int i = 0; i < 100; i++)
+// 	for (int i = 0; i < 10; i++)
 // 	{
-// 		e.getActor()->moveDown();
-// 		e.shoot();
+// 		// e.getActor()->moveDown();
+// 		// e.shoot();
 // 		e.nextStep();
 
-// 		g_ofs << e.getBullets();
+// 		// g_ofs << e.getBullets();
 // 		g_ofs << e.getPlanes();
 // 	}
 	
@@ -44,6 +44,7 @@
 
 // 	return (0);
 // }
+
 
 #include "Engine.hpp"
 #include "Plane.hpp"
@@ -78,7 +79,8 @@ void Engine::shoot(void)
 
 void Engine::nextStep(void)
 {
-	// move planes
+
+	/* move planes */
 	for (int i = 0; i < _planes.getArrayLen(); i++)
 	{
 		if (_planes.getItem(i))
@@ -95,13 +97,22 @@ void Engine::nextStep(void)
 		}
 	}
 
+	/* create new planes */
+	int planes = rand() % 2;
+	for (int i = 0; i < planes; i++)
+	{
+		_planes.push(new Plane(
+			rand() % (Renderer::GAME_SCENE_HEIGHT - 2) + 1,
+			Renderer::GAME_SCENE_WIDTH - 2));
+	}
+
 	/* move asteroids */
 	for (int i = 0; i < _asteriods.getArrayLen(); i++)
 	{
 		_asteriods.getItem(i)->moveLeft();
 	}
 
-	/* move bullets */
+	// /* move bullets */
 	for (int i = 0; i < _bullets.getArrayLen(); i++)
 	{
 		if (_bullets.getItem(i))
@@ -146,20 +157,15 @@ void Engine::nextStep(void)
 
 Engine::Engine(void)
 {
-	for (int i = 0; i < 10; i++)
-	{
-		_planes.push(new Plane(
-			rand() % (Renderer::GAME_SCENE_HEIGHT - 1) + 1,
-			Renderer::GAME_SCENE_WIDTH - 1));
-	}
+	srand(clock());
 	for (int i = 0; i < 30; i++)
 	{
 		_asteriods.push(new Asteroid(
-			rand() % (Renderer::GAME_SCENE_HEIGHT - 1) + 1,
-			rand() % Renderer::GAME_SCENE_WIDTH - 1
+			rand() % (Renderer::GAME_SCENE_HEIGHT - 2) + 1,
+			rand() % (Renderer::GAME_SCENE_WIDTH - 1)
 			));
 	}
-	_actor = new Actor(Renderer::GAME_INFO_HEIGHT / 2, 0);
+	_actor = new Actor(Renderer::GAME_SCENE_HEIGHT / 2, 1);
 }
 
 Engine::~Engine(void)

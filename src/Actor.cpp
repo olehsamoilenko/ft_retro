@@ -25,7 +25,7 @@ void Actor::moveUp(void)
 
 void Actor::moveDown(void)
 {
-	if (_x < Renderer::GAME_SCENE_HEIGHT - 1)
+	if (_x < Renderer::GAME_SCENE_HEIGHT - 2)
 		AItem::moveDown();
 }
 
