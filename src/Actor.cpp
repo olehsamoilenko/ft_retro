@@ -28,12 +28,12 @@ int Actor::getScore(void) const
 	return (_score);
 }
 
-void Actor::setScore(AItem * plane)
+void Actor::setScore(AItem *)
 {
 	_score += 1;
 }
 
-void Actor::takeDamage(AItem * plane)
+void Actor::takeDamage(AItem *)
 {
 	_lives -= 1;
 }
