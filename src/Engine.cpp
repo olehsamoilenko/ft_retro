@@ -10,42 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "Plane.hpp"
-// #include "Container.hpp"
-// #include "Engine.hpp"
-// #include "Renderer.hpp"
-
-// int		main(void)
-// {
-// 	Renderer *gameRender = new Renderer();
-// 	Engine e;
-// 	// g_ofs << e.getBullets();
-// 	// g_ofs << e.getPlanes();
-
-// 	for (int i = 0; i < 10; i++)
-// 	{
-// 		// e.getActor()->moveDown();
-// 		// e.shoot();
-// 		e.nextStep();
-
-// 		// g_ofs << e.getBullets();
-// 		g_ofs << e.getPlanes();
-// 	}
-	
-// 	// e.shoot();
-
-	
-// 	// g_ofs << e.getBullets();
-// 	// e.nextStep();
-// 	// e.nextStep();
-// 	// g_ofs << e.getBullets();
-
-// 	system ("leaks ft_retro > leaks.txt");
-
-// 	return (0);
-// }
-
-
 #include "Engine.hpp"
 #include "Plane.hpp"
 #include "Asteroid.hpp"
@@ -123,7 +87,7 @@ void Engine::nextStep(void)
 				g_ofs << "* ";
 				_bullets.getItem(i)->showInfo(g_ofs);
 				g_ofs << " out of map *" << std::endl;
-
+				
 				_bullets.kill(i);
 			}
 		}
@@ -145,7 +109,7 @@ void Engine::nextStep(void)
 						g_ofs << " and ";
 						_planes.getItem(i)->showInfo(g_ofs);
 						g_ofs << " *" << std::endl;
-
+						_actor->setScore(_planes.getItem(i));
 						_bullets.kill(j);
 						_planes.kill(i);
 						break ;

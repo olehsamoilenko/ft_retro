@@ -32,6 +32,8 @@ class Actor : public AItem
 
 		char getCharacter(void) const;
 		int getLives(void) const;
+		int getScore(void) const;
+		void setScore(AItem * plane);
 		void moveUp(void);
 		void moveDown(void);
 
@@ -43,6 +45,7 @@ class Actor : public AItem
 		Actor(void);
 
 		int _lives;
+		int _score;
 };
 
 std::ostream & operator<<(std::ostream & o, Actor const &);
