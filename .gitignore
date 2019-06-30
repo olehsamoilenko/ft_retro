@@ -1,0 +1,5 @@
+obj/
+ft_retro
+*.txt
+*.vscode
+*.DS_Store*
