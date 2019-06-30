@@ -28,5 +28,7 @@ int		main(void)
 
 	gameRender->render(*engine);
 
+	system("leaks ft_retro > leaks.txt");
+
 	return (0);
 }

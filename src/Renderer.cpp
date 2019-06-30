@@ -117,7 +117,7 @@ void	Renderer::_render_info(Engine& engine)
 {
 	box(_info, 0, 0);
 	mvwprintw(_info, 1, 1, "live: %d", engine.getActor()->getLives());
-	mvwprintw(_info, 2, 1, "score: %d");
+	mvwprintw(_info, 2, 1, "score: %d", engine.getActor()->getScore());
 	mvwprintw(_info, 3, 1, "speed: %d", (1000 - _speed));
 
 	wrefresh(_info);
@@ -140,7 +140,7 @@ void	Renderer::_render_final(Engine& engine)
 	char hello2[] = " YOUR SCORE ";
 	mvaddstr(GAME_SCENE_HEIGHT / 2, (GAME_SCENE_WIDTH - strlen(hello))/2, hello);
 	mvaddstr(GAME_SCENE_HEIGHT / 2 + 1, (GAME_SCENE_WIDTH - strlen(hello2))/2, hello2);
-	mvwprintw(_game, GAME_SCENE_HEIGHT / 2 + 2, (GAME_SCENE_WIDTH / 2), "%d", 200);
+	mvwprintw(_game, GAME_SCENE_HEIGHT / 2 + 2, (GAME_SCENE_WIDTH / 2), "%d", engine.getActor()->getScore());
 	mvaddstr(GAME_SCENE_HEIGHT / 2 + 3, (GAME_SCENE_WIDTH - strlen(hello))/2, hello);
 	wrefresh(_game);
 
