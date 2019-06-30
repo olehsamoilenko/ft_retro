@@ -28,7 +28,7 @@ void Asteroid::moveLeft(int limitX, int limitY)
 {
 	AItem::moveLeft();
 	if (_y < 0)
-		_y = Renderer::GAME_SCENE_WIDTH;
+		_y = Renderer::GAME_SCENE_WIDTH - 1;
 }
 
 void Asteroid::showInfo(std::ostream & o) const
