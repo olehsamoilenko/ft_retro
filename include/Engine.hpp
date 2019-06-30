@@ -27,6 +27,7 @@ class Engine
 		Container const & getPlanes(void) const;
 		Container const & getAsteroids(void) const;
 		Container const & getBullets(void) const;
+		Actor * getActor(void) const;
 		// Actor const & getActor(void) const;
 		void nextStep(void);
 

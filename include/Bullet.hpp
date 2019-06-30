@@ -32,5 +32,4 @@ class Bullet : public AItem
 		Bullet(void);
 };
 
-
 #endif

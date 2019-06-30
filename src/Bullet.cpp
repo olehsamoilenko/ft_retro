@@ -25,14 +25,14 @@ Bullet * Bullet::clone(void) const
 
 void Bullet::showInfo(std::ostream & o) const
 {
-	o << "Bullet (" << _x << ", " << _y << ")" << std::endl;
+	o << "Bullet (" << _x << ", " << _y << ")";
 }
 
-// std::ostream & operator<<(std::ostream & o, Bullet const &)
-// {
-// 	o << "Bullet" << std::endl;
-// 	return (o);
-// }
+std::ostream & operator<<(std::ostream & o, Bullet const & src)
+{
+	o << "Bullet (" << src.getX() << ", " << src.getY() << ")";
+	return (o);
+}
 
 Bullet::Bullet(int x, int y) : AItem(x, y)
 {
@@ -48,7 +48,7 @@ Bullet & Bullet::operator=(Bullet const & src)
 {
 	if (this != &src)
 	{
-
+		// ?
 	}
 	return (*this);
 }

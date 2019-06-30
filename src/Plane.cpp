@@ -25,7 +25,7 @@ Plane * Plane::clone(void) const
 
 void Plane::showInfo(std::ostream & o) const
 {
-	o << "Plane (" << _x << ", " << _y << ")" << std::endl;
+	o << "Plane (" << _x << ", " << _y << ")";
 }
 
 // std::ostream & operator<<(std::ostream & o, Plane const &)
