@@ -84,7 +84,7 @@ void	Renderer::_render_game(Engine& engine)
 }
 
 
-void	Renderer::_update_speed(int key_press)
+void	Renderer::_update_speed(int key_press, Engine& engine)
 {
 	if (key_press == 43) {
 		if (_speed > 100)
@@ -95,7 +95,7 @@ void	Renderer::_update_speed(int key_press)
 		if (_speed < 900)
 			_speed += 100;
 	}
-	//_render_info();
+	_render_info(engine);
 }
 
 void	Renderer::_update_player_move(int key_press, Engine& engine)
@@ -190,7 +190,7 @@ void	Renderer::render(Engine& engine)
 
 	while (_player_press_key != 27)
 	{
-		_update_speed(_player_press_key);
+		_update_speed(_player_press_key, engine);
 		_update_player_move(_player_press_key, engine);
 
 		new_time = std::clock();
