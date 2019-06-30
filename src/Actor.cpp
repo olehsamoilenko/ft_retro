@@ -34,6 +34,11 @@ void Actor::moveDown(void)
 		AItem::moveDown();
 }
 
+int Actor::getLives(void) const
+{
+	return (_lives);
+}
+
 char Actor::getCharacter(void) const
 {
 	return ('A');
