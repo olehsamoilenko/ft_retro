@@ -14,7 +14,7 @@
 #include <iostream>
 
 
-Renderer::Renderer() : _render_iterator(0), _player_press_key(0), _speed(500)
+Renderer::Renderer() : _render_iterator(0), _player_press_key(0), _speed(200)
 {
 
 }
@@ -170,6 +170,9 @@ void	Renderer::render(Engine& engine)
 
 	start_color();
 	init_pair(1, COLOR_GREEN, COLOR_BLACK);
+	init_pair(2, COLOR_BLACK, COLOR_BLACK);
+	attron(COLOR_PAIR(2));
+
 
 	this->_init_game();
 	this->_init_info();
@@ -217,6 +220,8 @@ void	Renderer::render(Engine& engine)
 
 	clear();
 	refresh();
+
+	attron(COLOR_PAIR(1));
 	_render_final(engine);
 
 
