@@ -64,6 +64,24 @@ void	Renderer::_render_game(Engine& engine)
 		}
 	}
 
+	i = -1;
+	while (++i < engine.getBullets().getArrayLen()) {
+		if (engine.getBullets().getItem(i))
+		{
+			mvaddch(
+					engine.getBullets().getItem(i)->getX(),
+					engine.getBullets().getItem(i)->getY(),
+					engine.getBullets().getItem(i)->getCharacter()
+			);
+		}
+	}
+
+	mvaddch(
+			engine.getActor()->getX(),
+			engine.getActor()->getY(),
+			engine.getActor()->getCharacter()
+	);
+
 	wrefresh(_game);
 }
 
@@ -80,6 +98,17 @@ void	Renderer::_update_speed(int key_press)
 			_speed += 100;
 	}
 	_render_info();
+}
+
+void	Renderer::_update_player_move(int key_press, Engine& engine)
+{
+	if (key_press == KEY_DOWN) {
+		engine.getActor()->moveDown();
+	}
+
+	if (key_press == KEY_UP) {
+		engine.getActor()->moveUp();
+	}
 }
 
 
@@ -139,6 +168,7 @@ void	Renderer::render(Engine& engine)
 	while (_player_press_key != 27)
 	{
 		_update_speed(_player_press_key);
+		_update_player_move(_player_press_key, engine);
 
 		new_time = std::clock();
 		delta_time = (new_time - old_time) / 1000;

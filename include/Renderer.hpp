@@ -48,6 +48,7 @@ private:
 	void _init_game(void);
 	void _init_info(void);
 	void _update_speed(int key_press);
+	void _update_player_move(int key_press, Engine& engine);
 
 };
 
