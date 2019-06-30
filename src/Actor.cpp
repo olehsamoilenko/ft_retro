@@ -15,10 +15,23 @@
 
 #include "Container.hpp"
 #include "Bullet.hpp"
+#include "Renderer.hpp"
+
+void Actor::moveUp(void)
+{
+	if (_x > 1)
+		AItem::moveUp();
+}
+
+void Actor::moveDown(void)
+{
+	if (_x < Renderer::GAME_SCENE_HEIGHT - 1)
+		AItem::moveDown();
+}
 
 char Actor::getCharacter(void) const
 {
-	return 'A';
+	return ('A');
 }
 
 Actor * Actor::clone(void) const
@@ -41,7 +54,7 @@ Actor::Actor(int x, int y) : AItem(x, y)
 	g_ofs << "* Actor created *" << std::endl;
 }
 
-Actor::Actor(void) : AItem()
+Actor::Actor(void) //: AItem()
 {
 
 }
@@ -55,7 +68,7 @@ Actor & Actor::operator=(Actor const & src)
 {
 	if (this != &src)
 	{
-
+		// ?
 	}
 	return (*this);
 }

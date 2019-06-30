@@ -12,6 +12,7 @@
 
 #include "Asteroid.hpp"
 #include "AItem.hpp"
+#include "Renderer.hpp"
 
 Asteroid * Asteroid::clone(void) const
 {
@@ -20,26 +21,20 @@ Asteroid * Asteroid::clone(void) const
 
 char Asteroid::getCharacter(void) const
 {
-	return 'A';
+	return ('A');
 }
 
 void Asteroid::moveLeft(int limitX, int limitY)
 {
-	AItem::moveLeft(limitX, limitY);
+	AItem::moveLeft();
 	if (_y < 0)
-		_y = limitY;
+		_y = Renderer::GAME_SCENE_WIDTH;
 }
 
 void Asteroid::showInfo(std::ostream & o) const
 {
 	o << "Asteroid (" << _x << ", " << _y << ")" << std::endl;
 }
-
-// std::ostream & operator<<(std::ostream & o, Asteroid const &)
-// {
-// 	o << "Asteroid" << std::endl;
-// 	return (o);
-// }
 
 Asteroid::Asteroid(int x, int y) : AItem(x, y)
 {

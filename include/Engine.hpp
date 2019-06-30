@@ -19,7 +19,7 @@
 class Engine
 {
 	public:
-		Engine(int height, int width, int planes);
+		Engine(void);
 		Engine(Engine const &);
 		Engine & operator=(Engine const &);
 		virtual ~Engine(void);
@@ -33,10 +33,6 @@ class Engine
 		void shoot(void);
 
 	private:
-		Engine(void);
-		int _winHeight;
-		int _winWidth;
-
 		Actor *		_actor;
 
 		Container	_planes;

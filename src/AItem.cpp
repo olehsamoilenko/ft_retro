@@ -24,22 +24,22 @@ int AItem::getY(void) const
 	return (_y);
 }
 
-void AItem::moveUp(int limitX, int limitY)
+void AItem::moveUp(void)
 {
 	_x -= 1;
 }
 
-void AItem::moveDown(int limitX, int limitY)
+void AItem::moveDown(void)
 {
 	_x += 1;
 }
 
-void AItem::moveLeft(int limitX, int limitY)
+void AItem::moveLeft(void)
 {
 	_y -= 1;
 }
 
-void AItem::moveRight(int limitX, int limitY)
+void AItem::moveRight(void)
 {
 	_y += 1;
 }
