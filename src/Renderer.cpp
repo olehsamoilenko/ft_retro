@@ -144,7 +144,7 @@ void	Renderer::_render_final(Engine& engine)
 	mvaddstr(GAME_SCENE_HEIGHT / 2 + 3, (GAME_SCENE_WIDTH - strlen(hello))/2, hello);
 	wrefresh(_game);
 
-	int c;
+	int c = 0;
 	while (c != 27) {
 		c = getch();
 
@@ -196,7 +196,7 @@ void	Renderer::render(Engine& engine)
 		new_time = std::clock();
 		delta_time = (new_time - old_time) / 1000;
 
-		if (delta_time > _speed) {
+		if ((int)delta_time > _speed) {
 			clear();
 			refresh();
 			old_time = new_time;
@@ -211,6 +211,7 @@ void	Renderer::render(Engine& engine)
 		} else {
 			_player_press_key = getch();
 		}
+
 	}
 
 
