@@ -35,8 +35,6 @@ Renderer& Renderer::operator = (Renderer const &inst)
 
 void	Renderer::_render_game(Engine& engine)
 {
-	char hello[] = "GAME SCENE!";
-	mvaddstr(GAME_SCENE_HEIGHT / 2, (GAME_SCENE_WIDTH - strlen(hello))/2, hello);
 	box(_game, 0, 0);
 
 	// RENDER PLANES
@@ -108,6 +106,10 @@ void	Renderer::_update_player_move(int key_press, Engine& engine)
 
 	if (key_press == KEY_UP) {
 		engine.getActor()->moveUp();
+	}
+
+	if (key_press == 32) {
+		engine.shoot();
 	}
 }
 
