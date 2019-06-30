@@ -15,11 +15,6 @@
 #ifndef RENDERER_HPP
 #define RENDERER_HPP
 
-#define GAME_SCENE_WIDTH 100
-#define GAME_SCENE_HEIGHT 45
-
-#define GAME_INFO_WIDTH 100
-#define GAME_INFO_HEIGHT 5
 
 class Renderer {
 
@@ -28,10 +23,16 @@ public:
 	~Renderer();
 	Renderer(const Renderer &inst);
 	Renderer  &operator = (Renderer const &inst);
+
+	static const int GAME_SCENE_WIDTH = 100;
+	static const int GAME_SCENE_HEIGHT = 45;
+	static const int GAME_INFO_WIDTH = 100;
+	static const int GAME_INFO_HEIGHT = 5;
+
 	void    render( void );
 
 private:
-	WINDOW *_window;
+	WINDOW *_game;
 	WINDOW *_info;
 	int 	_some_data;
 

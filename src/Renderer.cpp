@@ -47,10 +47,10 @@ void	Renderer::render(void)
 	curs_set(0);
 	refresh();
 
-	this->_window = newwin(height, width, 0, 0);
+	this->_game = newwin(height, width, 0, 0);
 	char hello[] = "GAME SCENE!";
 	mvaddstr(height / 2, (width - strlen(hello))/2, hello);
-	box(_window, 0, 0);
+	box(_game, 0, 0);
 
 	this->_info = newwin(GAME_INFO_HEIGHT, GAME_INFO_WIDTH, GAME_SCENE_HEIGHT, 0);
 	char hello2[] = "PLAYER INFO!";
@@ -59,10 +59,10 @@ void	Renderer::render(void)
 
 
 
-	wrefresh(_window);
+	wrefresh(_game);
 	wrefresh(_info);
 	getch();
 
-	delwin(_window);
+	delwin(_game);
 	endwin();
 }
