@@ -113,15 +113,16 @@ void	Renderer::render(Engine& engine)
 				if (engine.getPlanes().getItem(i))
 				{
 					mvaddch(
-					engine.getPlanes().getItem(i)->getX() - 10,
-					engine.getPlanes().getItem(i)->getY() - 10,
+					engine.getPlanes().getItem(i)->getX(),
+					engine.getPlanes().getItem(i)->getY(),
 					engine.getPlanes().getItem(i)->getCharacter()
 					);
-				}
 
-				engine.nextStep();
+				}
 			}
 
+			g_ofs << engine.getPlanes();
+			engine.nextStep();
 			_render_iterator++;
 		}
 
