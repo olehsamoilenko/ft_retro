@@ -23,6 +23,16 @@ void Actor::moveUp(void)
 		AItem::moveUp();
 }
 
+int Actor::getScore(void) const
+{
+	return (_score);
+}
+
+void Actor::setScore(AItem * plane)
+{
+	_score += 1;
+}
+
 void Actor::takeDamage(AItem * plane)
 {
 	_lives -= 1;
@@ -62,6 +72,7 @@ AItem * Actor::shoot(void) const
 Actor::Actor(int x, int y) : AItem(x, y)
 {
 	_lives = 5;
+	_score = 0;
 	g_ofs << "* Actor created *" << std::endl;
 }
 
