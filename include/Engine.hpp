@@ -24,6 +24,7 @@ class Engine
 		virtual ~Engine(void);
 
 		Container const & getPlanes(void) const;
+		Container const & getAsteroids(void) const;
 		
 		void nextStep(void);
 
@@ -33,6 +34,7 @@ class Engine
 		int _winWidth;
 		// container bullets
 		Container _planes;
+		Container _asteriods;
 		// container asteroids
 };
 

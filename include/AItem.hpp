@@ -13,7 +13,12 @@
 #ifndef AITEM_HPP
 # define AITEM_HPP
 
-# include <iostream>
+// # include <iostream>
+
+// delete
+# include <fstream>
+extern std::ofstream g_ofs;
+// delete
 
 class AItem
 {
@@ -30,10 +35,12 @@ class AItem
 		int getX(void) const;
 		int getY(void) const;
 
-		void moveUp(void);
-		void moveDown(void);
-		void moveLeft(void);
-		void moveRight(void);
+		virtual void moveUp(int limitX, int limitY);
+		virtual void moveDown(int limitX, int limitY);
+		virtual void moveLeft(int limitX, int limitY);
+		virtual void moveRight(int limitX, int limitY);
+
+		virtual char getCharacter(void) const = 0;
 	
 	protected: // private ?
 		int _x;

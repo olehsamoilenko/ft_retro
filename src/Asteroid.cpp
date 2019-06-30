@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Plane.cpp                                 :+:      :+:    :+:   */
+/*   Asteroid.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osamoile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,41 +10,48 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Plane.hpp"
+#include "Asteroid.hpp"
 #include "AItem.hpp"
 
-char Plane::getCharacter(void) const
+Asteroid * Asteroid::clone(void) const
 {
-	return 'P';
+	return (new Asteroid(*this));
 }
 
-Plane * Plane::clone(void) const
+char Asteroid::getCharacter(void) const
 {
-	return (new Plane(*this));
+	return 'A';
 }
 
-void Plane::showInfo(std::ostream & o) const
+void Asteroid::moveLeft(int limitX, int limitY)
 {
-	o << "Plane (" << _x << ", " << _y << ")" << std::endl;
+	AItem::moveLeft(limitX, limitY);
+	if (_y < 0)
+		_y = limitY;
 }
 
-// std::ostream & operator<<(std::ostream & o, Plane const &)
+void Asteroid::showInfo(std::ostream & o) const
+{
+	o << "Asteroid (" << _x << ", " << _y << ")" << std::endl;
+}
+
+// std::ostream & operator<<(std::ostream & o, Asteroid const &)
 // {
-// 	o << "Plane" << std::endl;
+// 	o << "Asteroid" << std::endl;
 // 	return (o);
 // }
 
-Plane::Plane(int x, int y) : AItem(x, y)
+Asteroid::Asteroid(int x, int y) : AItem(x, y)
 {
-	g_ofs << "* Plane created *" << std::endl;
+	g_ofs << "* Asteroid created *" << std::endl;
 }
 
-Plane::~Plane(void)
+Asteroid::~Asteroid(void)
 {
-	g_ofs << "* Plane dead *" << std::endl;
+	g_ofs << "* Asteroid dead *" << std::endl;
 }
 
-Plane & Plane::operator=(Plane const & src)
+Asteroid & Asteroid::operator=(Asteroid const & src)
 {
 	if (this != &src)
 	{
@@ -53,7 +60,7 @@ Plane & Plane::operator=(Plane const & src)
 	return (*this);
 }
 
-Plane::Plane(Plane const & src)
+Asteroid::Asteroid(Asteroid const & src)
 {
 	*this = src;
 }
