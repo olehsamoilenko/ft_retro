@@ -15,7 +15,7 @@
 
 char Plane::getCharacter(void) const
 {
-	return 'P';
+	return '{';
 }
 
 Plane * Plane::clone(void) const

@@ -10,25 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "Plane.hpp"
 #include "Container.hpp"
 #include "Engine.hpp"
 #include "Renderer.hpp"
 
-
 int		main(void)
 {
-
-
 	Engine *engine = new Engine();
-
-
 	Renderer *gameRender = new Renderer();
-
 	gameRender->render(*engine);
-
-	system("leaks ft_retro > leaks.txt");
-
 	return (0);
 }

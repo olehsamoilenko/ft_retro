@@ -50,12 +50,11 @@ void Engine::nextStep(void)
 		if (_planes.getItem(i))
 		{
 			_planes.getItem(i)->moveLeft();
-			if (_planes.getItem(i)->getY() < 0)
+			if (_planes.getItem(i)->getY() < 1)
 			{
 				g_ofs << "* ";
 				_planes.getItem(i)->showInfo(g_ofs);
 				g_ofs << " out of map *" << std::endl;
-
 				_planes.kill(i);
 			}
 		}
@@ -82,7 +81,7 @@ void Engine::nextStep(void)
 		if (_bullets.getItem(i))
 		{
 			_bullets.getItem(i)->moveRight();
-			if (_bullets.getItem(i)->getX() < 0)
+			if (_bullets.getItem(i)->getY() >= Renderer::GAME_SCENE_WIDTH - 1)
 			{
 				g_ofs << "* ";
 				_bullets.getItem(i)->showInfo(g_ofs);
