@@ -25,9 +25,7 @@ class Asteroid : public AItem
 
 		Asteroid * clone(void) const;
 		void showInfo(std::ostream & o) const;
-
 		void moveLeft(void);
-
 		char getCharacter(void) const;
 
 	private:

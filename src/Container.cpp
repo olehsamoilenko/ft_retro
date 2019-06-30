@@ -45,7 +45,7 @@ int Container::push(AItem* item)
 		{
 			if (_items[i] == item)
 			{
-				std::cout << "*item already exist in container*" << std::endl;
+				std::cout << "* item already exist in container *" << std::endl;
 				return (_arrayLen);
 			}
 		}

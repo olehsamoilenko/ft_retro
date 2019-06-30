@@ -65,7 +65,8 @@ AItem & AItem::operator=(AItem const & src)
 {
 	if (this != &src)
 	{
-
+		_x = src._x;
+		_y = src._y;
 	}
 	return (*this);
 }

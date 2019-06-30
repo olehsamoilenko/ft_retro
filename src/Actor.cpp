@@ -51,7 +51,7 @@ int Actor::getLives(void) const
 
 char Actor::getCharacter(void) const
 {
-	return ('A');
+	return ('>');
 }
 
 void Actor::showInfo(std::ostream & o) const
@@ -82,11 +82,6 @@ std::ostream & operator<<(std::ostream & o, Actor const & src)
 	return (o);
 }
 
-// Actor::Actor(void) //: AItem()
-// {
-
-// }
-
 Actor::~Actor(void)
 {
 	g_ofs << "* Actor dead *" << std::endl;
@@ -96,7 +91,8 @@ Actor & Actor::operator=(Actor const & src)
 {
 	if (this != &src)
 	{
-		// ?
+		_lives = src._lives;
+		_score = src._score;
 	}
 	return (*this);
 }

@@ -25,7 +25,6 @@ class Bullet : public AItem
 
 		Bullet * clone(void) const;
 		void showInfo(std::ostream & o) const;
-
 		char getCharacter(void) const;
 
 	private:

@@ -33,7 +33,6 @@ class Container
 	private:
 		int _arrayLen;
 		AItem ** _items;
-		// void _show(void);
 };
 
 std::ostream & operator<<(std::ostream & o, Container const &);
