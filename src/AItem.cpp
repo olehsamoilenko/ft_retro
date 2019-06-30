@@ -12,6 +12,8 @@
 
 #include "AItem.hpp"
 
+std::ofstream g_ofs("log.txt"); // here ?
+
 int AItem::getX(void) const
 {
 	return (_x);
@@ -22,22 +24,22 @@ int AItem::getY(void) const
 	return (_y);
 }
 
-void AItem::moveUp(void)
+void AItem::moveUp(int limitX, int limitY)
 {
 	_x -= 1;
 }
 
-void AItem::moveDown(void)
+void AItem::moveDown(int limitX, int limitY)
 {
 	_x += 1;
 }
 
-void AItem::moveLeft(void)
+void AItem::moveLeft(int limitX, int limitY)
 {
 	_y -= 1;
 }
 
-void AItem::moveRight(void)
+void AItem::moveRight(int limitX, int limitY)
 {
 	_y += 1;
 }

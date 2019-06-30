@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Plane.hpp                                          :+:      :+:    :+:   */
+/*   Asteroid.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osamoile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,28 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLANE_HPP
-# define PLANE_HPP
+#ifndef ASTEROID_HPP
+# define ASTEROID_HPP
 
 #include "AItem.hpp"
 
-class Plane : public AItem
+class Asteroid : public AItem
 {
 	public:
-		Plane(int x, int y);
-		Plane(Plane const &);
-		Plane & operator=(Plane const &);
-		virtual ~Plane(void);
+		Asteroid(int x, int y);
+		Asteroid(Asteroid const &);
+		Asteroid & operator=(Asteroid const &);
+		virtual ~Asteroid(void);
 
-		Plane * clone(void) const;
+		Asteroid * clone(void) const;
 		void showInfo(std::ostream & o) const;
+
+		void moveLeft(int limitX, int limitY);
 
 		char getCharacter(void) const;
 
 	private:
-		Plane(void);
+		Asteroid(void);
 };
-
-// std::ostream & operator<<(std::ostream & o, Plane const &);
 
 #endif

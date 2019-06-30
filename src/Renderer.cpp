@@ -109,11 +109,17 @@ void	Renderer::render(Engine& engine)
 
 			int i = -1;
 			while (++i < engine.getPlanes().getArrayLen()) {
-				mvprintw(
-						engine.getPlanes().getItem(i)->getX(),
-						engine.getPlanes().getItem(i)->getY(),
-						"X"
-				);
+
+				if (engine.getPlanes().getItem(i))
+				{
+					mvaddch(
+					engine.getPlanes().getItem(i)->getX() - 10,
+					engine.getPlanes().getItem(i)->getY() - 10,
+					engine.getPlanes().getItem(i)->getCharacter()
+					);
+				}
+
+				engine.nextStep();
 			}
 
 			_render_iterator++;

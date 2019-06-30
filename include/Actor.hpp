@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Plane.hpp                                          :+:      :+:    :+:   */
+/*   Actor.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osamoile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,28 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLANE_HPP
-# define PLANE_HPP
+#ifndef ACTOR_HPP
+# define ACTOR_HPP
 
 #include "AItem.hpp"
 
-class Plane : public AItem
+class Bullet;
+class Container;
+
+class Actor : public AItem
 {
 	public:
-		Plane(int x, int y);
-		Plane(Plane const &);
-		Plane & operator=(Plane const &);
-		virtual ~Plane(void);
+		Actor(void);
+		Actor(int x, int y);
+		Actor(Actor const &);
+		Actor & operator=(Actor const &);
+		virtual ~Actor(void);
 
-		Plane * clone(void) const;
+		Actor * clone(void) const;
 		void showInfo(std::ostream & o) const;
 
 		char getCharacter(void) const;
 
+		AItem * shoot(void) const;
+
 	private:
-		Plane(void);
 };
 
-// std::ostream & operator<<(std::ostream & o, Plane const &);
 
 #endif

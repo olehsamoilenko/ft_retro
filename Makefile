@@ -12,12 +12,15 @@
 
 NAME =	ft_retro
 CC =	clang++
-CFLAGS = -Wall -Werror -Wextra
-CLASS =	Plane \
+CFLAGS = #-Wall -Werror -Wextra
+CLASS =	AItem \
+		Plane \
 		Engine \
 		Container \
 		Renderer \
-		AItem
+		Asteroid \
+		Actor \
+		Bullet
 IFACE =
 HPP =	$(addprefix include/, $(addsuffix .hpp, $(CLASS) $(IFACE)))
 OBJ =	$(addprefix obj/, $(addsuffix .o, $(CLASS) main))

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Plane.hpp                                          :+:      :+:    :+:   */
+/*   Bullet.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osamoile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,28 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLANE_HPP
-# define PLANE_HPP
+#ifndef BULLET_HPP
+# define BULLET_HPP
 
 #include "AItem.hpp"
 
-class Plane : public AItem
+class Bullet : public AItem
 {
 	public:
-		Plane(int x, int y);
-		Plane(Plane const &);
-		Plane & operator=(Plane const &);
-		virtual ~Plane(void);
+		Bullet(int x, int y);
+		Bullet(Bullet const &);
+		Bullet & operator=(Bullet const &);
+		virtual ~Bullet(void);
 
-		Plane * clone(void) const;
+		Bullet * clone(void) const;
 		void showInfo(std::ostream & o) const;
 
 		char getCharacter(void) const;
 
 	private:
-		Plane(void);
+		Bullet(void);
 };
 
-// std::ostream & operator<<(std::ostream & o, Plane const &);
 
 #endif

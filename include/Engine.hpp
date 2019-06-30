@@ -13,25 +13,35 @@
 #ifndef ENGINE_HPP
 # define ENGINE_HPP
 
+#include "Actor.hpp"
 #include "Container.hpp"
 
 class Engine
 {
 	public:
-		Engine(int planes); // ?
+		Engine(int height, int width, int planes);
 		Engine(Engine const &);
 		Engine & operator=(Engine const &);
 		virtual ~Engine(void);
 
 		Container const & getPlanes(void) const;
-		
+		Container const & getAsteroids(void) const;
+		Container const & getBullets(void) const;
+		// Actor const & getActor(void) const;
 		void nextStep(void);
+
+		void shoot(void);
 
 	private:
 		Engine(void);
-		// container bullets
-		Container _planes;
-		// container asteroids
+		int _winHeight;
+		int _winWidth;
+
+		Actor *		_actor;
+
+		Container	_planes;
+		Container	_asteriods;
+		Container	_bullets;
 };
 
 #endif

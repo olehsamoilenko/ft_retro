@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "Plane.hpp"
 #include "Container.hpp"
 #include "Engine.hpp"
@@ -45,7 +46,7 @@ int		main(void)
 {
 
 
-	Engine *engine = new Engine(5);
+	Engine *engine = new Engine(Renderer::GAME_SCENE_HEIGHT, Renderer::GAME_SCENE_WIDTH, 5);
 
 //	 e->push(new Plane());
 //	 e->push(new Plane());
