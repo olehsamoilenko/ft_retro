@@ -16,31 +16,6 @@
 #include "Engine.hpp"
 #include "Renderer.hpp"
 
-//int		main(void)
-//{
-//	Engine e(5);
-//
-//	// e.push(new Plane());
-//	// e.push(new Plane());
-//	// e.push(new Plane());
-//
-//	g_ofs << e.getPlanes();
-//	e.nextStep();
-//	g_ofs << e.getPlanes();
-//
-//	// c.kill(0);
-//	// c.kill(1);
-//	// // c.kill(2);
-//	// c.kill(3);
-//
-//
-//
-//	// g_ofs << c;
-//	system("leaks ft_retro > leaks.txt");
-//
-//	return (0);
-//}
-
 
 int		main(void)
 {
@@ -48,9 +23,6 @@ int		main(void)
 
 	Engine *engine = new Engine();
 
-//	 e->push(new Plane());
-//	 e->push(new Plane());
-//	 e->push(new Plane());
 
 	Renderer *gameRender = new Renderer();
 

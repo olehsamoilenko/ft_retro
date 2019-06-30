@@ -35,8 +35,6 @@ Renderer& Renderer::operator = (Renderer const &inst)
 
 void	Renderer::_render_game(Engine& engine)
 {
-	char hello[] = "GAME SCENE!";
-	mvaddstr(GAME_SCENE_HEIGHT / 2, (GAME_SCENE_WIDTH - strlen(hello))/2, hello);
 	box(_game, 0, 0);
 
 	// RENDER PLANES
@@ -47,7 +45,7 @@ void	Renderer::_render_game(Engine& engine)
 			mvaddch(
 					engine.getPlanes().getItem(i)->getX(),
 					engine.getPlanes().getItem(i)->getY(),
-					engine.getPlanes().getItem(i)->getCharacter()
+					engine.getPlanes().getItem(i)->getCharacter() | COLOR_PAIR(1)
 			);
 		}
 	}
@@ -59,7 +57,7 @@ void	Renderer::_render_game(Engine& engine)
 			mvaddch(
 					engine.getAsteroids().getItem(i)->getX(),
 					engine.getAsteroids().getItem(i)->getY(),
-					engine.getAsteroids().getItem(i)->getCharacter()
+					engine.getAsteroids().getItem(i)->getCharacter() | COLOR_PAIR(1)
 			);
 		}
 	}
@@ -71,7 +69,7 @@ void	Renderer::_render_game(Engine& engine)
 			mvaddch(
 					engine.getBullets().getItem(i)->getX(),
 					engine.getBullets().getItem(i)->getY(),
-					engine.getBullets().getItem(i)->getCharacter()
+					engine.getBullets().getItem(i)->getCharacter() | COLOR_PAIR(1)
 			);
 		}
 	}
@@ -79,7 +77,7 @@ void	Renderer::_render_game(Engine& engine)
 	mvaddch(
 			engine.getActor()->getX(),
 			engine.getActor()->getY(),
-			engine.getActor()->getCharacter()
+			engine.getActor()->getCharacter() | COLOR_PAIR(1)
 	);
 
 	wrefresh(_game);
@@ -109,6 +107,10 @@ void	Renderer::_update_player_move(int key_press, Engine& engine)
 	if (key_press == KEY_UP) {
 		engine.getActor()->moveUp();
 	}
+
+	if (key_press == 32) {
+		engine.shoot();
+	}
 }
 
 
@@ -134,6 +136,29 @@ void	Renderer::_init_info(void)
 {
 	this->_info = newwin(GAME_INFO_HEIGHT, GAME_INFO_WIDTH, GAME_SCENE_HEIGHT, 0);
 }
+void	Renderer::_render_final(Engine& engine)
+{
+	int c;
+//	while (c != 27) {
+//		c = getch();
+//
+//
+//		char hello[] = "=======================================";
+//		mvaddstr(GAME_SCENE_HEIGHT / 2, (GAME_SCENE_WIDTH - strlen(hello))/2, hello);
+//
+//
+//		mvwprintw(_game, GAME_SCENE_HEIGHT / 2, (GAME_SCENE_WIDTH - strlen(hello))/2, hello);
+//		mvwprintw(_game, 27, 0, "    ★★★★★★★★★★★★★★★★★★★★★★★★★★★  YOUR  SCORE %d    ★★★★★★★★★★★★★★★★★★★★★★★★★★    ",  300);
+//		mvwprintw(_game, 28, 0, "                                  Press \"Esc\"                                ");
+//		mvwprintw(_game, 27, 0, "    =======================================    ");
+//
+//		wrefresh(_game);
+//		if (c == 32)
+//			break;
+//	}
+}
+
+
 
 
 
@@ -148,11 +173,17 @@ void	Renderer::render(Engine& engine)
 	curs_set(0);
 	nodelay(stdscr, TRUE);
 	keypad(stdscr, TRUE);
-
+	scrollok(stdscr, TRUE);
 	refresh();
+
+	start_color();
+	init_pair(1, COLOR_GREEN, COLOR_BLACK);
 
 	this->_init_game();
 	this->_init_info();
+
+	wbkgd(_game, COLOR_PAIR(1));
+	wbkgd(_info, COLOR_PAIR(1));
 
 
 	_render_game(engine);
@@ -187,6 +218,9 @@ void	Renderer::render(Engine& engine)
 		}
 		_player_press_key = getch();
 	}
+
+	_render_final(engine);
+
 
 	delwin(_game);
 	delwin(_info);
