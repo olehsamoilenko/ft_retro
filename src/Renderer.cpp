@@ -95,7 +95,7 @@ void	Renderer::_update_speed(int key_press)
 		if (_speed < 900)
 			_speed += 100;
 	}
-	_render_info();
+	//_render_info();
 }
 
 void	Renderer::_update_player_move(int key_press, Engine& engine)
@@ -113,12 +113,10 @@ void	Renderer::_update_player_move(int key_press, Engine& engine)
 	}
 }
 
-
-
-void	Renderer::_render_info(void)
+void	Renderer::_render_info(Engine& engine)
 {
 	box(_info, 0, 0);
-	mvwprintw(_info, 1, 1, "live: %d");
+	mvwprintw(_info, 1, 1, "live: %d", engine.getActor()->getLives());
 	mvwprintw(_info, 2, 1, "score: %d");
 	mvwprintw(_info, 3, 1, "speed: %d", (1000 - _speed));
 
@@ -138,28 +136,22 @@ void	Renderer::_init_info(void)
 }
 void	Renderer::_render_final(Engine& engine)
 {
+	char hello[] = "=======================================";
+	char hello2[] = " YOUR SCORE ";
+	mvaddstr(GAME_SCENE_HEIGHT / 2, (GAME_SCENE_WIDTH - strlen(hello))/2, hello);
+	mvaddstr(GAME_SCENE_HEIGHT / 2 + 1, (GAME_SCENE_WIDTH - strlen(hello2))/2, hello2);
+	mvwprintw(_game, GAME_SCENE_HEIGHT / 2 + 2, (GAME_SCENE_WIDTH / 2), "%d", 200);
+	mvaddstr(GAME_SCENE_HEIGHT / 2 + 3, (GAME_SCENE_WIDTH - strlen(hello))/2, hello);
+	wrefresh(_game);
+
 	int c;
-//	while (c != 27) {
-//		c = getch();
-//
-//
-//		char hello[] = "=======================================";
-//		mvaddstr(GAME_SCENE_HEIGHT / 2, (GAME_SCENE_WIDTH - strlen(hello))/2, hello);
-//
-//
-//		mvwprintw(_game, GAME_SCENE_HEIGHT / 2, (GAME_SCENE_WIDTH - strlen(hello))/2, hello);
-//		mvwprintw(_game, 27, 0, "    ★★★★★★★★★★★★★★★★★★★★★★★★★★★  YOUR  SCORE %d    ★★★★★★★★★★★★★★★★★★★★★★★★★★    ",  300);
-//		mvwprintw(_game, 28, 0, "                                  Press \"Esc\"                                ");
-//		mvwprintw(_game, 27, 0, "    =======================================    ");
-//
-//		wrefresh(_game);
-//		if (c == 32)
-//			break;
-//	}
+	while (c != 27) {
+		c = getch();
+
+		if (c == 32)
+			break;
+	}
 }
-
-
-
 
 
 void	Renderer::render(Engine& engine)
@@ -187,7 +179,7 @@ void	Renderer::render(Engine& engine)
 
 
 	_render_game(engine);
-	_render_info();
+	_render_info(engine);
 
 	std::clock_t old_time;
 	std::clock_t new_time;
@@ -207,18 +199,23 @@ void	Renderer::render(Engine& engine)
 		if (delta_time > _speed) {
 			clear();
 			refresh();
-
 			old_time = new_time;
-
 			_render_game(engine);
-			_render_info();
-
+			_render_info(engine);
 			engine.nextStep();
 			_render_iterator++;
 		}
-		_player_press_key = getch();
+
+		if (engine.getActor()->getLives() == 0) {
+			_player_press_key = 27;
+		} else {
+			_player_press_key = getch();
+		}
 	}
 
+
+	clear();
+	refresh();
 	_render_final(engine);
 
 
