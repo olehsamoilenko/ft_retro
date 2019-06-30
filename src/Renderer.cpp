@@ -138,24 +138,21 @@ void	Renderer::_init_info(void)
 }
 void	Renderer::_render_final(Engine& engine)
 {
+	char hello[] = "=======================================";
+	char hello2[] = " YOUR SCORE ";
+	mvaddstr(GAME_SCENE_HEIGHT / 2, (GAME_SCENE_WIDTH - strlen(hello))/2, hello);
+	mvaddstr(GAME_SCENE_HEIGHT / 2 + 1, (GAME_SCENE_WIDTH - strlen(hello2))/2, hello2);
+	mvwprintw(_game, GAME_SCENE_HEIGHT / 2 + 2, (GAME_SCENE_WIDTH / 2), "%d", 200);
+	mvaddstr(GAME_SCENE_HEIGHT / 2 + 3, (GAME_SCENE_WIDTH - strlen(hello))/2, hello);
+	wrefresh(_game);
+
 	int c;
-//	while (c != 27) {
-//		c = getch();
-//
-//
-//		char hello[] = "=======================================";
-//		mvaddstr(GAME_SCENE_HEIGHT / 2, (GAME_SCENE_WIDTH - strlen(hello))/2, hello);
-//
-//
-//		mvwprintw(_game, GAME_SCENE_HEIGHT / 2, (GAME_SCENE_WIDTH - strlen(hello))/2, hello);
-//		mvwprintw(_game, 27, 0, "    ★★★★★★★★★★★★★★★★★★★★★★★★★★★  YOUR  SCORE %d    ★★★★★★★★★★★★★★★★★★★★★★★★★★    ",  300);
-//		mvwprintw(_game, 28, 0, "                                  Press \"Esc\"                                ");
-//		mvwprintw(_game, 27, 0, "    =======================================    ");
-//
-//		wrefresh(_game);
-//		if (c == 32)
-//			break;
-//	}
+	while (c != 27) {
+		c = getch();
+
+		if (c == 32)
+			break;
+	}
 }
 
 
@@ -207,18 +204,18 @@ void	Renderer::render(Engine& engine)
 		if (delta_time > _speed) {
 			clear();
 			refresh();
-
 			old_time = new_time;
-
 			_render_game(engine);
 			_render_info();
-
 			engine.nextStep();
 			_render_iterator++;
 		}
 		_player_press_key = getch();
 	}
 
+
+	clear();
+	refresh();
 	_render_final(engine);
 
 
