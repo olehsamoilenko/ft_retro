@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <ncurses.h>
+#include <unistd.h>
 
 #ifndef RENDERER_HPP
 #define RENDERER_HPP
@@ -29,12 +30,20 @@ public:
 	static const int GAME_INFO_WIDTH = 100;
 	static const int GAME_INFO_HEIGHT = 5;
 
-	void    render( void );
+	void    render(void);
 
 private:
 	WINDOW *_game;
 	WINDOW *_info;
-	int 	_some_data;
+
+	int		_render_iterator;
+	int		_player_press_key;
+
+	void _render_game(void);
+	void _render_info(void);
+
+	void _init_game(void);
+	void _init_info(void);
 
 };
 
