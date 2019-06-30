@@ -57,7 +57,7 @@ void	Renderer::_render_game(Engine& engine)
 			mvaddch(
 					engine.getAsteroids().getItem(i)->getX(),
 					engine.getAsteroids().getItem(i)->getY(),
-					engine.getAsteroids().getItem(i)->getCharacter() | COLOR_PAIR(2)
+					engine.getAsteroids().getItem(i)->getCharacter() | COLOR_PAIR(1)
 			);
 		}
 	}
@@ -136,6 +136,29 @@ void	Renderer::_init_info(void)
 {
 	this->_info = newwin(GAME_INFO_HEIGHT, GAME_INFO_WIDTH, GAME_SCENE_HEIGHT, 0);
 }
+void	Renderer::_render_final(Engine& engine)
+{
+	int c;
+//	while (c != 27) {
+//		c = getch();
+//
+//
+//		char hello[] = "=======================================";
+//		mvaddstr(GAME_SCENE_HEIGHT / 2, (GAME_SCENE_WIDTH - strlen(hello))/2, hello);
+//
+//
+//		mvwprintw(_game, GAME_SCENE_HEIGHT / 2, (GAME_SCENE_WIDTH - strlen(hello))/2, hello);
+//		mvwprintw(_game, 27, 0, "    ★★★★★★★★★★★★★★★★★★★★★★★★★★★  YOUR  SCORE %d    ★★★★★★★★★★★★★★★★★★★★★★★★★★    ",  300);
+//		mvwprintw(_game, 28, 0, "                                  Press \"Esc\"                                ");
+//		mvwprintw(_game, 27, 0, "    =======================================    ");
+//
+//		wrefresh(_game);
+//		if (c == 32)
+//			break;
+//	}
+}
+
+
 
 
 
@@ -150,6 +173,7 @@ void	Renderer::render(Engine& engine)
 	curs_set(0);
 	nodelay(stdscr, TRUE);
 	keypad(stdscr, TRUE);
+	scrollok(stdscr, TRUE);
 	refresh();
 
 	start_color();
@@ -194,6 +218,9 @@ void	Renderer::render(Engine& engine)
 		}
 		_player_press_key = getch();
 	}
+
+	_render_final(engine);
+
 
 	delwin(_game);
 	delwin(_info);
