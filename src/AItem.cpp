@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Plane.cpp                                 :+:      :+:    :+:   */
+/*   AItem.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osamoile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,38 +10,56 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Plane.hpp"
 #include "AItem.hpp"
 
-std::ofstream g_ofs("log.txt"); // here ?
-
-Plane * Plane::clone(void) const
+int AItem::getX(void) const
 {
-	return (new Plane(*this));
+	return (_x);
 }
 
-void Plane::showInfo(std::ostream & o) const
+int AItem::getY(void) const
 {
-	o << "plane (" << _x << ", " << _y << ")" << std::endl;
+	return (_y);
 }
 
-// std::ostream & operator<<(std::ostream & o, Plane const &)
-// {
-// 	o << "Plane" << std::endl;
-// 	return (o);
-// }
-
-Plane::Plane(void) : AItem(0, 0) // not (0,0)
+void AItem::moveUp(void)
 {
-	g_ofs << "* plane created *" << std::endl;
+	_x -= 1;
 }
 
-Plane::~Plane(void)
+void AItem::moveDown(void)
 {
-	g_ofs << "* plane dead *" << std::endl;
+	_x += 1;
 }
 
-Plane & Plane::operator=(Plane const & src)
+void AItem::moveLeft(void)
+{
+	_y -= 1;
+}
+
+void AItem::moveRight(void)
+{
+	_y += 1;
+}
+
+AItem::AItem(int x, int y)
+{
+	_x = x;
+	_y = y;
+}
+
+AItem::AItem(void)
+{
+
+}
+
+
+AItem::~AItem(void)
+{
+
+}
+
+AItem & AItem::operator=(AItem const & src)
 {
 	if (this != &src)
 	{
@@ -50,7 +68,7 @@ Plane & Plane::operator=(Plane const & src)
 	return (*this);
 }
 
-Plane::Plane(Plane const & src)
+AItem::AItem(AItem const & src)
 {
 	*this = src;
 }

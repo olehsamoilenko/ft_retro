@@ -35,11 +35,8 @@ Renderer& Renderer::operator = (Renderer const &inst)
 
 void	Renderer::render(void)
 {
-	const int width = 50;
-	const int height = 20;
-	const int lines = 50;
-	const int cols = 50;
-
+	const int width = GAME_SCENE_WIDTH;
+	const int height = GAME_SCENE_HEIGHT;
 
 	if (!initscr())
 	{
@@ -50,18 +47,20 @@ void	Renderer::render(void)
 	curs_set(0);
 	refresh();
 
-
-	int offsetx = (lines - width) / 2;
-	int offsety = (cols - height) / 2;
-
-	this->_window = newwin(height, width, offsety, offsetx);
-
-	char hello[] = "Hello, world!";
-
-	mvaddstr(lines / 2, (cols - strlen(hello))/2, hello);
+	this->_window = newwin(height, width, 0, 0);
+	char hello[] = "GAME SCENE!";
+	mvaddstr(height / 2, (width - strlen(hello))/2, hello);
 	box(_window, 0, 0);
 
+	this->_info = newwin(GAME_INFO_HEIGHT, GAME_INFO_WIDTH, GAME_SCENE_HEIGHT, 0);
+	char hello2[] = "PLAYER INFO!";
+	mvaddstr( GAME_SCENE_HEIGHT + GAME_INFO_HEIGHT / 2, (GAME_INFO_WIDTH - strlen(hello2))/2, hello2);
+	box(_info, 0, 0);
+
+
+
 	wrefresh(_window);
+	wrefresh(_info);
 	getch();
 
 	delwin(_window);

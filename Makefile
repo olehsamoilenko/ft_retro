@@ -16,8 +16,9 @@ CFLAGS = -Wall -Werror -Wextra
 CLASS =	Plane \
 		Engine \
 		Container \
-		Renderer
-IFACE =	IItem
+		Renderer \
+		AItem
+IFACE =
 HPP =	$(addprefix include/, $(addsuffix .hpp, $(CLASS) $(IFACE)))
 OBJ =	$(addprefix obj/, $(addsuffix .o, $(CLASS) main))
 

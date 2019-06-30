@@ -11,10 +11,27 @@
 /* ************************************************************************** */
 
 #include "Engine.hpp"
+#include "Plane.hpp"
 
-Engine::Engine(void)
+Container const & Engine::getPlanes(void) const
 {
-	// g_ofs << "* marine created *" << std::endl;
+	return (_planes);
+}
+
+void Engine::nextStep(void)
+{
+	// g_ofs << _planes;
+	int i = -1;
+	while (++i < _planes.getArrayLen())
+		_planes.getItem(i)->moveUp();
+	// g_ofs << _planes;
+}
+
+Engine::Engine(int planes)
+{
+	int i = -1;
+	while (++i < planes)
+		_planes.push(new Plane());
 }
 
 Engine::~Engine(void)

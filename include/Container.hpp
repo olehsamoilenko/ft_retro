@@ -15,7 +15,7 @@
 
 # include <iostream>
 
-class IItem;
+class AItem;
 
 class Container
 {
@@ -24,15 +24,15 @@ class Container
 		Container(Container const & src);
 		Container & operator=(Container const & src);
 		~Container(void);
-
 		int getArrayLen() const;
 		int getCount() const;
-		IItem * getItem(int id) const;
-		int push(IItem * item);
+		AItem * getItem(int id) const;
+		int push(AItem * item);
+		bool kill(int id);
 
 	private:
 		int _arrayLen;
-		IItem ** _items;
+		AItem ** _items;
 		// void _show(void);
 };
 
