@@ -46,7 +46,7 @@ int		main(void)
 {
 
 
-	Engine *engine = new Engine(Renderer::GAME_SCENE_HEIGHT, Renderer::GAME_SCENE_WIDTH, 5);
+	Engine *engine = new Engine();
 
 //	 e->push(new Plane());
 //	 e->push(new Plane());

@@ -23,6 +23,11 @@ void Actor::moveUp(void)
 		AItem::moveUp();
 }
 
+void Actor::takeDamage(AItem * plane)
+{
+	_lives -= 1;
+}
+
 void Actor::moveDown(void)
 {
 	if (_x < Renderer::GAME_SCENE_HEIGHT - 2)
@@ -51,6 +56,7 @@ AItem * Actor::shoot(void) const
 
 Actor::Actor(int x, int y) : AItem(x, y)
 {
+	_lives = 5;
 	g_ofs << "* Actor created *" << std::endl;
 }
 
@@ -60,10 +66,10 @@ std::ostream & operator<<(std::ostream & o, Actor const & src)
 	return (o);
 }
 
-Actor::Actor(void) //: AItem()
-{
+// Actor::Actor(void) //: AItem()
+// {
 
-}
+// }
 
 Actor::~Actor(void)
 {
