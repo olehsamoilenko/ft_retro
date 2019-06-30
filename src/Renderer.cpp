@@ -95,7 +95,7 @@ void	Renderer::_update_speed(int key_press)
 		if (_speed < 900)
 			_speed += 100;
 	}
-	_render_info();
+	//_render_info();
 }
 
 void	Renderer::_update_player_move(int key_press, Engine& engine)
@@ -113,12 +113,10 @@ void	Renderer::_update_player_move(int key_press, Engine& engine)
 	}
 }
 
-
-
-void	Renderer::_render_info(void)
+void	Renderer::_render_info(Engine& engine)
 {
 	box(_info, 0, 0);
-	mvwprintw(_info, 1, 1, "live: %d");
+	mvwprintw(_info, 1, 1, "live: %d", engine.getActor()->getLives());
 	mvwprintw(_info, 2, 1, "score: %d");
 	mvwprintw(_info, 3, 1, "speed: %d", (1000 - _speed));
 
@@ -156,9 +154,6 @@ void	Renderer::_render_final(Engine& engine)
 }
 
 
-
-
-
 void	Renderer::render(Engine& engine)
 {
 	if (!initscr())
@@ -184,7 +179,7 @@ void	Renderer::render(Engine& engine)
 
 
 	_render_game(engine);
-	_render_info();
+	_render_info(engine);
 
 	std::clock_t old_time;
 	std::clock_t new_time;
@@ -206,11 +201,16 @@ void	Renderer::render(Engine& engine)
 			refresh();
 			old_time = new_time;
 			_render_game(engine);
-			_render_info();
+			_render_info(engine);
 			engine.nextStep();
 			_render_iterator++;
 		}
-		_player_press_key = getch();
+
+		if (engine.getActor()->getLives() == 0) {
+			_player_press_key = 27;
+		} else {
+			_player_press_key = getch();
+		}
 	}
 
 

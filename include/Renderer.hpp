@@ -43,7 +43,7 @@ private:
 	int		_speed;
 
 	void _render_game(Engine& engine);
-	void _render_info(void);
+	void _render_info(Engine& engine);
 
 	void _init_game(void);
 	void _init_info(void);
